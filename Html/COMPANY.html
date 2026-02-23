@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Don Jesus COMPANY - Premium Sportswear</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0a0f24;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0a0f24 0%, #1a2a6c 100%);
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid rgba(3, 169, 244, 0.3);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #03a9f4, #0288d1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 900;
+      color: white;
+      box-shadow: 0 8px 25px rgba(3, 169, 244, 0.4);
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s;
+    }
+
+    .logo:hover {
+      transform: rotate(360deg) scale(1.1);
+    }
+
+    .brand-text h1 {
+      font-size: 28px;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #fff, #03a9f4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+    }
+
+    .brand-text p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 3px;
+    }
+
+ 
+    nav {
+      display: flex;
+      gap: 35px;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s;
+      padding: 10px 20px;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #03a9f4;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 80%;
+    }
+
+    nav a:hover {
+      color: #03a9f4;
+      background: rgba(3, 169, 244, 0.1);
+    }
+
+    
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #0a0f24 0%, #1a2a6c 50%, #0a0f24 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(3, 169, 244, 0.15), transparent);
+      border-radius: 50%;
+      top: -200px;
+      right: -200px;
+      animation: pulse 8s infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(3, 169, 244, 0.1), transparent);
+      border-radius: 50%;
+      bottom: -300px;
+      left: -300px;
+      animation: pulse 10s infinite reverse;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 40px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .ceo-photo {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #03a9f4;
+      box-shadow: 0 20px 60px rgba(3, 169, 244, 0.5);
+      margin-bottom: 30px;
+      transition: all 0.3s;
+    }
+
+    .ceo-photo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 25px 80px rgba(3, 169, 244, 0.6);
+    }
+
+    .ceo-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #03a9f4, #0288d1);
+      padding: 8px 25px;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(3, 169, 244, 0.3);
+    }
+
+    .ceo-title {
+      font-size: 58px;
+      font-weight: 900;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #fff, #03a9f4, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+    }
+
+    .ceo-name {
+      font-size: 36px;
+      color: #03a9f4;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 20px rgba(3, 169, 244, 0.5);
+    }
+
+    .ceo-role {
+      font-size: 22px;
+      opacity: 0.95;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .btn-primary, .btn-secondary {
+      padding: 16px 40px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #03a9f4, #0288d1);
+      color: white;
+      box-shadow: 0 8px 25px rgba(3, 169, 244, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(3, 169, 244, 0.6);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid #03a9f4;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(3, 169, 244, 0.1);
+      transform: translateY(-3px);
+    }
+
+    section {
+      margin: 0;
+      padding: 100px 60px;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff, #03a9f4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 60px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  
+    #about {
+      background: linear-gradient(135deg, #0f1728 0%, #1a2a6c 50%, #0f1728 100%);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .about-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 45px 35px;
+      border-radius: 25px;
+      border: 2px solid rgba(3, 169, 244, 0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(3, 169, 244, 0.1), transparent);
+      transition: left 0.5s;
+    }
+
+    .about-card:hover::before {
+      left: 100%;
+    }
+
+    .about-card:hover {
+      transform: translateY(-15px);
+      border-color: #03a9f4;
+      box-shadow: 0 20px 60px rgba(3, 169, 244, 0.3);
+      background: rgba(3, 169, 244, 0.08);
+    }
+
+    .about-icon {
+      font-size: 50px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .about-card h3 {
+      font-size: 28px;
+      color: #03a9f4;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .about-card p, .about-card ul {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .about-card ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    .about-card ul li {
+      padding: 10px 0;
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .about-card ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #03a9f4;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .ceo-highlight {
+      background: rgba(3, 169, 244, 0.1);
+      border: 2px solid rgba(3, 169, 244, 0.3);
+      padding: 30px;
+      border-radius: 20px;
+      margin: 50px auto;
+      max-width: 700px;
+      text-align: center;
+    }
+
+    .ceo-highlight p {
+      font-size: 18px;
+      line-height: 2;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .highlight {
+      color: #03a9f4;
+      font-weight: 700;
+    }
+
+   
+    #services {
+      background: linear-gradient(135deg, #0a0f24 0%, #1a2a6c 50%, #0a0f24 100%);
+    }
+
+    .slideshow-container {
+      height: 600px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      margin-bottom: 60px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .slideshow-container::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(3, 169, 244, 0.3), rgba(26, 42, 108, 0.6));
+      z-index: 1;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: slideshow 20s infinite;
+    }
+
+    .slide:nth-child(1) {
+      background-image: url('https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=1200');
+      animation-delay: 0s;
+    }
+
+    .slide:nth-child(2) {
+      background-image: url('https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg?auto=compress&cs=tinysrgb&w=1200');
+      animation-delay: 4s;
+    }
+
+    .slide:nth-child(3) {
+      background-image: url('https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=1200');
+      animation-delay: 8s;
+    }
+
+    .slide:nth-child(4) {
+      background-image: url('https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1200');
+      animation-delay: 12s;
+    }
+
+    .slide:nth-child(5) {
+      background-image: url('https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=1200');
+      animation-delay: 16s;
+    }
+
+    @keyframes slideshow {
+      0% { opacity: 0; }
+      5% { opacity: 1; }
+      20% { opacity: 1; }
+      25% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    .slide-text {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding-top: 250px;
+    }
+
+    .slide-text h2 {
+      font-size: 64px;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+      font-weight: 900;
+    }
+
+    .slide-text p {
+      font-size: 28px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 35px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .service-box {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      overflow: hidden;
+      border: 2px solid rgba(3, 169, 244, 0.2);
+      transition: all 0.4s;
+      position: relative;
+    }
+
+    .service-box:hover {
+      transform: translateY(-15px);
+      border-color: #03a9f4;
+      box-shadow: 0 20px 60px rgba(3, 169, 244, 0.4);
+    }
+
+    .service-box img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .service-box:hover img {
+      transform: scale(1.1);
+    }
+
+    .service-box strong {
+      display: block;
+      padding: 25px;
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    
+    #blog {
+      background: linear-gradient(135deg, #0f1728 0%, #1a2a6c 50%, #0f1728 100%);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .blog-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      overflow: hidden;
+      border: 2px solid rgba(3, 169, 244, 0.2);
+      transition: all 0.4s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-15px);
+      border-color: #03a9f4;
+      box-shadow: 0 20px 60px rgba(3, 169, 244, 0.4);
+    }
+
+    .blog-image-container {
+      overflow: hidden;
+      position: relative;
+      height: 250px;
+    }
+
+    .blog-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .blog-card:hover .blog-image {
+      transform: scale(1.15);
+    }
+
+    .blog-date {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #03a9f4, #0288d1);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .blog-content {
+      padding: 30px;
+    }
+
+    .blog-category {
+      display: inline-block;
+      background: rgba(3, 169, 244, 0.2);
+      color: #03a9f4;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      border: 1px solid rgba(3, 169, 244, 0.4);
+    }
+
+    .blog-card h3 {
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 15px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .blog-card p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .read-more {
+      display: inline-block;
+      color: #03a9f4;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 12px 25px;
+      border: 2px solid #03a9f4;
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+
+    .read-more:hover {
+      background: #03a9f4;
+      color: white;
+      transform: translateX(5px);
+    }
+
+    #delivery {
+      background: linear-gradient(135deg, #0a0f24 0%, #1a2a6c 50%, #0a0f24 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #delivery::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(3, 169, 244, 0.15), transparent);
+      border-radius: 50%;
+      top: -150px;
+      left: -150px;
+      animation: pulse 6s infinite;
+    }
+
+    .delivery-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .delivery-info {
+      color: white;
+    }
+
+    .delivery-info h2 {
+      font-size: 48px;
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, #fff, #03a9f4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .delivery-info p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 30px;
+    }
+
+    .delivery-features {
+      list-style: none;
+      padding: 0;
+      margin: 30px 0;
+    }
+
+    .delivery-features li {
+      padding: 15px 0;
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.9);
+      position: relative;
+      padding-left: 35px;
+      line-height: 1.6;
+    }
+
+    .delivery-features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #03a9f4;
+      font-weight: bold;
+      font-size: 22px;
+      background: rgba(3, 169, 244, 0.2);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #03a9f4;
+    }
+
+    .delivery-signup-box {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 50px 45px;
+      border-radius: 25px;
+      border: 2px solid rgba(3, 169, 244, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .delivery-signup-box h3 {
+      font-size: 32px;
+      color: #fff;
+      margin-bottom: 15px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .delivery-signup-box p {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 35px;
+      font-size: 16px;
+    }
+
+    .signup-form .form-group {
+      margin-bottom: 25px;
+    }
+
+    .signup-form .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #03a9f4;
+      font-size: 15px;
+    }
+
+    .signup-form input,
+    .signup-form select {
+      width: 100%;
+      padding: 15px 18px;
+      border: 2px solid rgba(3, 169, 244, 0.3);
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: inherit;
+      transition: all 0.3s;
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+    }
+
+    .signup-form input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .signup-form input:focus,
+    .signup-form select:focus {
+      outline: none;
+      border-color: #03a9f4;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 0 4px rgba(3, 169, 244, 0.1);
+    }
+
+    .signup-form select {
+      cursor: pointer;
+      color: white;
+    }
+
+    .signup-form select option {
+      background: #1a2a6c;
+      color: white;
+    }
+
+    .signup-btn {
+      background: linear-gradient(135deg, #03a9f4, #0288d1);
+      color: white;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s;
+      box-shadow: 0 8px 25px rgba(3, 169, 244, 0.4);
+      margin-top: 10px;
+    }
+
+    .signup-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(3, 169, 244, 0.6);
+    }
+
+    .signup-btn:active {
+      transform: translateY(0);
+    }
+
+    #delivery-success {
+      display: none;
+      background: linear-gradient(135deg, #4caf50, #45a049);
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 25px;
+      box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+      animation: slideIn 0.5s ease-out;
+    }
+
+    #delivery-success:target {
+      display: block;
+    }
+
+    .delivery-badge {
+      display: inline-block;
+      background: rgba(3, 169, 244, 0.2);
+      color: #03a9f4;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      border: 1px solid rgba(3, 169, 244, 0.4);
+    }
+
+  
+    #contact {
+      background: linear-gradient(135deg, #0a0f24 0%, #1a2a6c 50%, #0a0f24 100%);
+    }
+
+    .contact-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-bottom: 50px;
+      background: rgba(3, 169, 244, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      border: 2px solid rgba(3, 169, 244, 0.3);
+    }
+
+    .contact-info p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 2;
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 50px;
+      border-radius: 25px;
+      border: 2px solid rgba(3, 169, 244, 0.2);
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #03a9f4;
+      font-size: 16px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid rgba(3, 169, 244, 0.3);
+      border-radius: 12px;
+      font-size: 16px;
+      font-family: inherit;
+      transition: all 0.3s;
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #03a9f4;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 0 4px rgba(3, 169, 244, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 160px;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #03a9f4, #0288d1);
+      color: white;
+      padding: 18px 45px;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s;
+      box-shadow: 0 8px 25px rgba(3, 169, 244, 0.4);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(3, 169, 244, 0.6);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    #success-message {
+      display: none;
+      background: linear-gradient(135deg, #4caf50, #45a049);
+      color: white;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 30px;
+      box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+      animation: slideIn 0.5s ease-out;
+    }
+
+    #success-message:target {
+      display: block;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .social-section {
+      margin-top: 70px;
+      text-align: center;
+    }
+
+    .social-section h3 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .social-section p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 16px;
+      margin-bottom: 35px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 30px;
+      border-radius: 15px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.5s, height 0.5s;
+    }
+
+    .social-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .social-icon {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .social-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .instagram {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .facebook {
+      background: linear-gradient(135deg, #1877f2, #0d65d9);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .twitter {
+      background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .whatsapp {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .linkedin {
+      background: linear-gradient(135deg, #0077b5, #005885);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .youtube {
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+  
+    footer {
+      background: linear-gradient(135deg, #0a0f24, #1a2a6c);
+      color: white;
+      text-align: center;
+      padding: 50px 40px;
+      font-size: 16px;
+      border-top: 2px solid rgba(3, 169, 244, 0.3);
+    }
+
+    footer p {
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 1024px) {
+      header {
+        flex-direction: column;
+        padding: 20px 30px;
+        gap: 20px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      section {
+        padding: 80px 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+      }
+
+      .brand-text h1 {
+        font-size: 22px;
+      }
+
+      .ceo-title {
+        font-size: 42px;
+      }
+
+      .ceo-name {
+        font-size: 28px;
+      }
+
+      .section-title {
+        font-size: 36px;
+      }
+
+      .slide-text h2 {
+        font-size: 42px;
+      }
+
+      .slide-text p {
+        font-size: 20px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .contact-form {
+        padding: 35px 25px;
+      }
+
+      section {
+        padding: 60px 25px;
+      }
+
+      .delivery-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .delivery-info h2 {
+        font-size: 36px;
+      }
+
+      .delivery-signup-box {
+        padding: 35px 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <div class="logo">DJ</div>
+    <div class="brand-text">
+      <h1>Don Jesus COMPANY</h1>
+      <p>Premium Quality Sportswear</p>
+    </div>
+  </div>
+  
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#delivery">Delivery</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="hero" id="home">
+  <div class="hero-content">
+    <div class="ceo-badge">Chief Executive Officer</div>
+    <img src="/69349172-0396-4dfe-bdbe-8c8aa738a838.jpeg" alt="CEO" class="ceo-photo" />
+    <div class="ceo-title">KAYIRANGA Don Jesus</div>
+    <div class="ceo-role">Founder & Software Engineer</div>
+    <p style="max-width: 700px; margin: 0 auto 30px; font-size: 18px; opacity: 0.9;">
+      Leading the future of premium sportswear with innovation, quality, and dedication to athletic excellence.
+    </p>
+    <div class="hero-buttons">
+      <a href="#services" class="btn-primary">Explore Products</a>
+      <a href="#contact" class="btn-secondary">Get In Touch</a>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <h2 class="section-title">About Our Company</h2>
+  <p class="section-subtitle">
+    Don Jesus COMPANY is your trusted partner for premium sportswear, dedicated to providing athletes and teams with top-quality gear.
+  </p>
+
+  <div class="ceo-highlight">
+    <p>
+      <span class="highlight">CEO:</span> KAYIRANGA Don Jesus<br>
+      <span class="highlight">Expertise:</span> Software Engineering & Business Leadership<br>
+      <span class="highlight">Vision:</span> Revolutionizing sportswear industry across Africa
+    </p>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <span class="about-icon">🎯</span>
+      <h3>Our Mission</h3>
+      <p>To provide high-quality and affordable sportswear for athletes and teams worldwide, ensuring peak performance and comfort in every product we deliver.</p>
+    </div>
+
+    <div class="about-card">
+      <span class="about-icon">👁️</span>
+      <h3>Our Vision</h3>
+      <p>To become the leading sportswear brand in Africa and beyond, recognized globally for innovation, quality, and commitment to athletic excellence.</p>
+    </div>
+
+    <div class="about-card">
+      <span class="about-icon">⭐</span>
+      <h3>Our Core Values</h3>
+      <ul>
+        <li>premium Quality Standards</li>
+        <li>Integrity & Transparency</li>
+        <li>Customer Satisfaction</li>
+        <li>Continuous Innovation</li>
+        <li>Teamwork & Collaboration</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="section-title">Our Premium Products</h2>
+  <p class="section-subtitle">
+    Discover our comprehensive range of high-quality sports equipment and apparel designed for champions.
+  </p>
+
+  <div class="slideshow-container">
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide-text">
+      <h2>Excellence in Every Thread</h2>
+      <p>Premium Quality • Professional Grade • Trusted by Athletes</p>
+    </div>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-box">
+      <img src="https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sports Jerseys">
+      <strong>Premium Sports Jerseys</strong>
+    </div>
+    <div class="service-box">
+      <img src="https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sports Shoes">
+      <strong>Professional Sports Shoes</strong>
+    </div>
+    <div class="service-box">
+      <img src="https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Match Balls">
+      <strong>Official Match Balls</strong>
+    </div>
+    <div class="service-box">
+      <img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Custom Team Kits">
+      <strong>Custom Team Kits</strong>
+    </div>
+    <div class="service-box">
+      <img src="https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sports Accessories">
+      <strong>Sports Accessories</strong>
+    </div>
+  </div>
+</section>
+
+<section id="delivery">
+  <h2 class="section-title">Fast & Reliable Delivery</h2>
+  <p class="section-subtitle">
+    Sign up for our delivery service and get your sports gear delivered right to your doorstep with ease and convenience.
+  </p>
+
+  <div class="delivery-container">
+    <div class="delivery-info">
+      <span class="delivery-badge">Premium Service</span>
+      <h2>Get Your Sports Gear Delivered Anywhere</h2>
+      <p>
+        We understand the importance of timely delivery for teams and athletes. Our dedicated delivery service ensures your orders arrive safely and on schedule, every time.
+      </p>
+
+      <ul class="delivery-features">
+        <li>Fast delivery within 3-7 business days</li>
+        <li>Track your order in real-time</li>
+        <li>Secure packaging for all products</li>
+        <li>Free delivery on orders over $100</li>
+        <li>Same-day dispatch for local orders</li>
+        <li>Flexible delivery time slots</li>
+        <li>Direct contact with delivery team</li>
+        <li>Easy returns and exchanges</li>
+      </ul>
+
+      <p style="margin-top: 30px; font-size: 16px; color: rgba(255, 255, 255, 0.75);">
+        📦 Over 5,000+ successful deliveries<br>
+        ⭐ 4.9/5 customer satisfaction rating
+      </p>
+    </div>
+
+    <div class="delivery-signup-box">
+      <h3>Sign Up for Delivery</h3>
+      <p>Fill in your details to register for our delivery service</p>
+
+      <form class="signup-form" action="#delivery-success" method="get">
+        <div class="form-group">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" name="full-name" required placeholder="Enter your full name">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+250 XXX XXX XXX">
+        </div>
+
+        <div class="form-group">
+          <label for="delivery-email">Email Address</label>
+          <input type="email" id="delivery-email" name="delivery-email" required placeholder="your.email@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="address">Delivery Address</label>
+          <input type="text" id="address" name="address" required placeholder="Street, City, District">
+        </div>
+
+        <div class="form-group">
+          <label for="city">City</label>
+          <select id="city" name="city" required>
+            <option value="">Select your city</option>
+            <option value="kigali">Kigali</option>
+            <option value="butare">Butare</option>
+            <option value="gisenyi">Gisenyi</option>
+            <option value="ruhengeri">Ruhengeri</option>
+            <option value="gitarama">Gitarama</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="product-type">Product Interest</label>
+          <select id="product-type" name="product-type" required>
+            <option value="">Select product type</option>
+            <option value="jerseys">Sports Jerseys</option>
+            <option value="shoes">Sports Shoes</option>
+            <option value="balls">Match Balls</option>
+            <option value="kits">Custom Team Kits</option>
+            <option value="accessories">Sports Accessories</option>
+            <option value="all">All Products</option>
+          </select>
+        </div>
+
+        <button type="submit" class="signup-btn">Register for Delivery</button>
+      </form>
+
+      <div id="delivery-success">
+        ✓ Registration successful! We'll contact you within 24 hours.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <h2 class="section-title">Latest Insights & Updates</h2>
+  <p class="section-subtitle">
+    Stay informed with the latest trends, tips, and news from the world of sports and sportswear.
+  </p>
+  
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-image-container">
+        <img src="https://images.pexels.com/photos/3764011/pexels-photo-3764011.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Choosing Sports Gear" class="blog-image">
+        <span class="blog-date">Jan 10, 2025</span>
+      </div>
+      <div class="blog-content">
+        <span class="blog-category">Expert Tips</span>
+        <h3>How to Choose the Right Sports Gear for Your Team</h3>
+        <p>Selecting quality sportswear is essential for team performance. Learn about fabric types, sizing, and what to look for when ordering team jerseys...</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-image-container">
+        <img src="https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sports Shoes Guide" class="blog-image">
+        <span class="blog-date">Jan 8, 2025</span>
+      </div>
+      <div class="blog-content">
+        <span class="blog-category">Product Reviews</span>
+        <h3>Top 5 Sports Shoes for Professional Athletes in 2025</h3>
+        <p>Discover the best athletic footwear that combines comfort, durability, and performance. We review the top picks for different sports...</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-image-container">
+        <img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team Jersey Design" class="blog-image">
+        <span class="blog-date">Jan 5, 2025</span>
+      </div>
+      <div class="blog-content">
+        <span class="blog-category">Design Trends</span>
+        <h3>Custom Team Jersey Design: 2025 Trends and Styles</h3>
+        <p>Stand out on the field with unique team jersey designs. Explore the latest color combinations, patterns, and customization options...</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-image-container">
+        <img src="https://images.pexels.com/photos/3735747/pexels-photo-3735747.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sports Equipment Care" class="blog-image">
+        <span class="blog-date">Jan 2, 2025</span>
+      </div>
+      <div class="blog-content">
+        <span class="blog-category">Maintenance</span>
+        <h3>How to Care for Your Sports Equipment</h3>
+        <p>Proper maintenance can significantly extend the lifespan of your sports gear. Learn the best practices for cleaning and storing equipment...</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-image-container">
+        <img src="https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Youth Sports" class="blog-image">
+        <span class="blog-date">Dec 28, 2024</span>
+      </div>
+      <div class="blog-content">
+        <span class="blog-category">Youth Sports</span>
+        <h3>Essential Sports Gear for Youth Teams</h3>
+        <p>Outfitting young athletes doesn't have to be expensive. Discover affordable yet quality options for youth sports teams...</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-image-container">
+        <img src="https://images.pexels.com/photos/3621163/pexels-photo-3621163.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sports Performance" class="blog-image">
+        <span class="blog-date">Dec 25, 2024</span>
+      </div>
+      <div class="blog-content">
+        <span class="blog-category">Performance</span>
+        <h3>The Impact of Quality Sportswear on Performance</h3>
+        <p>Does your gear really matter? Research shows that proper sportswear can improve performance, comfort, and reduce injury risk...</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title">Get In Touch</h2>
+  <p class="section-subtitle">
+    Have questions or ready to order? We'd love to hear from you. Send us a message and we'll respond promptly.
+  </p>
+  
+  <div class="contact-container">
+    <div class="contact-info">
+      <p>
+        <strong>Email:</strong> <span class="highlight">donjesuskayiranga@gmail.com</span><br>
+        <strong>Response Time:</strong> Within 24 hours
+      </p>
+    </div>
+
+    <form class="contact-form" action="#success-message" method="get">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" required placeholder="What is this regarding?">
+      </div>
+
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" required placeholder="Tell us how we can help you..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+
+    <div id="success-message">
+      ✓ Your message has been sent successfully! We'll get back to you soon.
+    </div>
+
+    <div class="social-section">
+      <h3>Connect With Us</h3>
+      <p>Follow us on social media for the latest updates, offers, and sports news</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/donje-sus12" target="_blank" rel="noopener noreferrer" class="social-btn instagram">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span class="social-text">@donje-sus12</span>
+        </a>
+
+        <a href="#" class="social-btn facebook">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          <span class="social-text">NI Don Jesus</span>
+        </a>
+
+        <a href="#" class="social-btn twitter">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+          </svg>
+          <span class="social-text">@DonJesusCompany</span>
+        </a>
+
+        <a href="#" class="social-btn whatsapp">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          <span class="social-text">+250 795 822 174</span>
+        </a>
+
+        <a href="#" class="social-btn linkedin">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          <span class="social-text">Don Jesus Company</span>
+        </a>
+
+        <a href="#" class="social-btn youtube">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span class="social-text">Don Jesus Sports</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Don Jesus COMPANY</strong> - Premium Quality Sportswear</p>
+  <p>© 2025 All Rights Reserved | Designed with Excellence</p>
+</footer>
+
+</body>
+</html>
