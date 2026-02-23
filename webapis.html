@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+   <h1 id="title">Press any key</h1>
+<p id="info">The you press will appear here.</p>
+<p id ="users"></p>
+<video autoplay width='400'></video>
+    <script>
+
+let title = document.getElementById("title");
+let info= document.getElementById("info");
+
+let displayed = document.getElementById("users");
+document.addEventListener("keyup", function(e) {
+
+    title.textContent="key pressed.";
+    info.textContent ="You pressed: "+ e.key
+})
+
+fetch("https://jsonplaceholder.typicode.com/users")
+.then(function(response) {
+    return response.json();
+})
+
+.then(function(data) {
+    
+    let html ="<ul>"
+
+    data.forEach(function(user) {
+        
+html += "<li>" + user.name + "</li>"
+    })
+    html += "</ul>"
+    displayed.innerHTML = html;
+})
+
+.catch(function(error) {
+
+    console.error(error);
+
+});
+
+
+
+
+fetch("https://jsonplaceholder.typicode.com/users",{
+
+method:"POST",
+headers: {
+    "Content-Type":"application/json"
+
+
+},
+body:JSON.stringify({
+    name:"Don Jesus",
+    email:"donjesuskayiranga@gmail.com",
+    phone:"0795822174"
+})
+
+})
+.then(function(response){
+    return response.json();
+
+})
+.then(function(data){
+    console.log(data);
+})
+.catch(function(error){
+    console.log(error);
+});
+
+
+
+navigator.mediaDevices.getUserMedia({ video:true})
+.then(function(stream) {
+    let video = document.querySelector("video");
+    video.srcObject = stream;
+})
+.catch(function(err){
+    console.error(err);
+});
+    </script>
+</body>
+</html>
