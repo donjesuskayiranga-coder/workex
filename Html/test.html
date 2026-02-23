@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Don Jesus COMPANY</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #0a0f24, #1a2a6c, #3b8d99);
+      background-attachment: fixed;
+      color: #fff;
+      line-height: 1.6;
+    }
+    header { background: #111; color: white; padding: 20px 40px; text-align: center; }
+    nav {
+      background: #222;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+      flex-wrap: wrap;
+    }
+    nav a { color: white; text-decoration: none; font-size: 18px; font-weight: bold; transition: 0.3s; }
+    nav a:hover { color: #03a9f4; }
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 15, 36, 0.65); z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; padding: 30px; }
+    .ceo-photo {
+      width: 220px; height: 220px; border-radius: 50%; object-fit: cover;
+      border: 6px solid #03a9f4; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      margin-bottom: 20px; animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
+    .ceo-title { font-size: 48px; font-weight: 700; margin: 10px 0; text-shadow: 0 3px 10px rgba(0,0,0,0.7); }
+    .ceo-name { font-size: 28px; color: #03a9f4; font-weight: 600; }
+    .ceo-role { font-size: 20px; opacity: 0.9; }
+
+    section {
+      margin: 60px auto;
+      width: 90%;
+      max-width: 1300px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+    #services {
+      position: relative;
+      background: linear-gradient(145deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      padding: 0;
+    }
+    .slideshow-container {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+    }
+    .slides {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slides.active { opacity: 1; }
+    .slides::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.45);
+    }
+    .slide-text {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 20px;
+    }
+    .slide-text h2 {
+      font-size: 52px;
+      margin: 0 0 15px;
+      color: #03a9f4;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    }
+    .slide-text p {
+      font-size: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .slide1 { background-image: url('https://images.pexels.com/photos/3757376/pexels-photo-3757376.jpeg'); }
+    .slide2 { background-image: url('https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg'); }
+    .slide3 { background-image: url('https://images.pexels.com/photos/3991876/pexels-photo-3991876.jpeg'); }
+    .slide4 { background-image: url('https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg'); }
+    .slide5 { background-image: url('https://images.pexels.com/photos/1432036/pexels-photo-1432036.jpeg'); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      padding: 50px 40px;
+      background: rgba(255,255,255,0.97);
+      color: #222;
+    }
+    .service-box {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
+    }
+    .service-box:hover {
+      transform: translateY(-12px);
+      border-color: #03a9f4;
+      box-shadow: 0 20px 40px rgba(3,169,244,0.25);
+    }
+    .service-box img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+    .service-box strong {
+      font-size: 20px;
+      color: #0a0f24;
+    }
+    #about, #contact {
+      background: rgba(255,255,255,0.95);
+      color: #222;
+      padding: 50px;
+    }
+    .highlight { color: #03a9f4; font-weight: bold; }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 35px;
+      font-size: 15px;
+    }
+    a.social-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 14px 28px; border-radius: 12px; color: #fff;
+      text-decoration: none; font-weight: bold;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+    .instagram { background: #E4405F; }
+    .facebook { background: #1877F2; }
+    .social-btn:hover { transform: translateY(-4px); }
+
+    @media (max-width: 768px) {
+      .slideshow-container { height: 400px; }
+      .slide-text h2 { font-size: 36px; }
+      .slide-text p { font-size: 18px; }
+      .ceo-photo { width: 180px; height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Don Jesus COMPANY</h1>
+  <p>Quality Sports Wear – Tenues, Shoes, Balls & More</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#services">Our Services</a>
+  <a href="#contact">Contact</a>
+</nav>
+<div class="hero" id="home">
+  <div class="hero-content">
+    <img src="/69349172-0396-4dfe-bdbe-8c8aa738a838.jpeg" alt="CEO" class="ceo-photo" />
+    <div class="ceo-title">CEO</div>
+    <div class="ceo-name">KAYIRANGA Don Jesus</div>
+    <div class="ceo-role">Founder & Software Engineer</div>
+  </div>
+</div>
+<section id="about">
+  <h2>About Us</h2>
+  <p style="text-align:center;font-size:18px;max-width:900px;margin:20px auto;">
+    Don Jesus COMPANY is a professional sportswear supplier offering high-quality products such as jerseys (tenue de sport), sports shoes, balls, and more.
+  </p>
+  <p style="text-align:center;">
+    <span class="highlight">CEO:</span> KAYIRANGA Don Jesus<br>
+    <span class="highlight">Expertise:</span> Software Engineering & Business Leadership
+  </p>
+</section>
+<section id="services">
+  <div class="slideshow-container">
+    <div class="slides slide1 active">
+      <div class="slide-text">
+        <h2>Premium Sports Jerseys</h2>
+        <p>Custom designs • High-quality fabric • Perfect fit</p>
+      </div>
+    </div>
+    <div class="slides slide2">
+      <div class="slide-text">
+        <h2>Professional Sports Shoes</h2>
+        <p>Comfort • Durability • Top performance</p>
+      </div>
+    </div>
+    <div class="slides slide3">
+      <div class="slide-text">
+        <h2>Official Match Balls</h2>
+        <p>Football • Basketball • Volleyball</p>
+      </div>
+    </div>
+    <div class="slides slide4">
+      <div class="slide-text">
+        <h2>Full Team Kits</h2>
+        <p>Complete packages for clubs and schools</p>
+      </div>
+    </div>
+    <div class="slides slide5">
+      <div class="slide-text">
+        <h2>Training & Accessories</h2>
+        <p>Everything your team needs to win</p>
+      </div>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-box">
+      <img src="https://images.pexels.com/photos/3757376/pexels-photo-3757376.jpeg" alt="Jerseys">
+      <strong>Sports Jerseys</strong>
+    </div>
+    <div class="service-box">
+      <img src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg" alt="Shoes">
+      <strong>Sports Shoes</strong>
+    </div>
+    <div class="service-box">
+      <img src="https://images.pexels.com/photos/3991876/pexels-photo-3991876.jpeg" alt="Balls">
+      <strong>Match Balls</strong>
+    </div>
+    <div class="service-box">
+      <img src="https://images.pexels.com/photos/842663/pexels-photo-842663.jpeg" alt="Kits">
+      <strong>Custom Team Kits</strong>
+    </div>
+    <div class="service-box">
+      <img src="https://images.pexels.com/photos/892328/pexels-photo-892328.jpeg" alt="Accessories">
+      <strong>Sports Accessories</strong>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p style="text-align:center;font-size:18px;">Email: <strong>donjesuskayiranga@gmail.com</strong></p>
+  <h3 style="margin-top:50px;text-align:center;">Follow Us</h3>
+  <div style="display:flex; justify-content:center; gap:25px; flex-wrap:wrap; margin-top:25px;">
+    <a href="#" class="social-btn instagram">Instagram: Don Je‑sus12</a>
+    <a href="#" class="social-btn facebook">Facebook: NI Don Jesus</a>
+  </div>
+</section>
+
+<footer>
+  © 2025 Don Jesus COMPANY – All Rights Reserved
+</footer>
+<script>
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.slides');
+
+  function showNextSlide() {
+    slides[slideIndex].classList.remove('active');
+    slideIndex = (slideIndex + 1) % slides.length;
+    slides[slideIndex].classList.add('active');
+  }
+  setInterval(showNextSlide, 4000);
+</script>
+
+</body>
+</html>
