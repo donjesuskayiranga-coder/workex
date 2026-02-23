@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <script>
+
+
+
+ fetch("http://localhost:4000/users" , {
+
+
+ method:"POST",
+
+ headers: {"content-Type":"application/json"},
+
+ body:JSON.stringify({
+   name:"KAYIRANGA  Ebra",
+   email:"ebrakayiranga@gmail.com",
+   school:"Pioneer high school"
+ })
+ })
+
+ .iwithen(function(response){
+
+   return response.json();
+ })
+ .then(function(data) {
+
+   console.log(data)
+
+ })
+
+ .catch(function(error){
+
+   console.log("error:",error)
+ });
+ </script>
+</body>
+</html>
