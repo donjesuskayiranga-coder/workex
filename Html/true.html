@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="POST">
+        <label for="task"></label>
+        <input type="text" id="task" name="a task" placeholder="Enter a task" required>  
+        <button id="addBtn">Add a task</button>
+        <ul id="tasklist"></ul>
+    </form>
+
+<script>
+document.getElementById("addBtn").addEventListener("click", (event) => {
+    let task = document.getElementById("task").value.trim();
+    if(task) {
+        let li = document.createElement("li");
+        li.innerText = task;
+        let deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "Delete";
+        li.appendChild(deleteBtn);
+
+        deleteBtn.addEventListener("click", (event) => {
+            event.stopPropagation();
+            li.remove();
+            localStorage.setItem("tasks", document.getElementById("tasklist").innerHTML);
+        });
+
+        li.addEventListener("click", () => {
+            li.classList.toggle("completed");
+            localStorage.setItem("tasks", document.getElementById("tasklist").innerHTML);
+        });
+
+        document.getElementById("tasklist").appendChild(li);
+        document.getElementById("task").value = "";
+
+        localStorage.setItem("tasks", document.getElementById("tasklist").innerHTML);
+    }
+});
+document.getElementById("tasklist").innerHTML = localStorage.getItem("tasks") || "";
+document.querySelectorAll("#tasklist li").forEach(li => {
+    if(!li.querySelector("button")) {
+        let deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "Delete";
+        li.appendChild(deleteBtn);
+
+        deleteBtn.addEventListener("click", (event) => {
+            event.stopPropagation();
+            li.remove();
+            localStorage.setItem("tasks", document.getElementById("tasklist").innerHTML);
+        });
+    }
+    li.addEventListener("click", () => {
+        li.classList.toggle("completed");
+        localStorage.setItem("tasks", document.getElementById("tasklist").innerHTML);
+    });
+});
+
+</script>
+</body>
+</html>
