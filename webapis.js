@@ -62,7 +62,6 @@ res.setHeader("Access-Control-Allow-Origin","*");
 
 
     else if(req.method === "POST" && req.url === "/users") {
-
         let body ="";
 
         req.on("data", chunk =>{
