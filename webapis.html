@@ -43,30 +43,20 @@ html += "<li>" + user.name + "</li>"
 .catch(function(error) {
 
     console.error(error);
-
 });
-
-
-
-
 fetch("https://jsonplaceholder.typicode.com/users",{
-
 method:"POST",
 headers: {
     "Content-Type":"application/json"
-
-
 },
 body:JSON.stringify({
     name:"Don Jesus",
     email:"donjesuskayiranga@gmail.com",
     phone:"0795822174"
 })
-
 })
 .then(function(response){
     return response.json();
-
 })
 .then(function(data){
     console.log(data);
@@ -74,9 +64,6 @@ body:JSON.stringify({
 .catch(function(error){
     console.log(error);
 });
-
-
-
 navigator.mediaDevices.getUserMedia({ video:true})
 .then(function(stream) {
     let video = document.querySelector("video");
