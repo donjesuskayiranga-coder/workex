@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Todo List App</title>
 <style>
+
+
 * {margin:0; padding:0; box-sizing:border-box;}
 body {font-family: Arial, Helvetica, sans-serif; background: blue; display:flex; justify-content:center; align-items:center; min-height:100vh; padding:20px;}
 .container {background:darkblue; padding:30px; border-radius:10px; width:100%; max-width:400px; box-shadow:0 5px 20px rgba(0,0,0,0.2);}
@@ -24,12 +27,12 @@ li {background:#eee; padding:10px; margin-bottom:10px; border-radius:5px; displa
 <body>
 
 <div class="container">
-<h1>📝 Todo List App</h1>
+<h1>📝 Todo List app</h1>
 <form id="todoForm">
 <input type="text" id = "taskInput" placeholder="Enter a task..." required>
 <button type="submit">Add</button>
 </form>
-<ul id="taskList"></ul>
+<ul id="tasklist"></ul>
 </div>
 
 <script>
@@ -68,8 +71,7 @@ function loadTasks() {
             e.stopPropagation();
             deleteTask(index); 
         });
-        li.appendChild(delBtn);
-
+        li.appendChild(delBtn)
         taskList.appendChild(li);
     });
 };
@@ -95,7 +97,7 @@ function deleteTask(index) {
     loadTasks();
 };
 
-form.addEventListener('submit', function(e){
+form.addEventListener('submit', function (e){
     e.preventDefault();
     const text = input.value.trim();
     if(!text) {
@@ -108,6 +110,7 @@ form.addEventListener('submit', function(e){
 });
 
 loadTasks();
+
 </script>
 
 </body>
