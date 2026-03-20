@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+    <p id ="yes"></p>
+    <script>
+fetch("http://localhost:5000/users")
+.then (function(response){
+    return response.json()
+})
+.then (function(data){
+let html = document.getElementById("yes")
+data.forEach(user => {
+html.innerHTML +=user.na
+me +" " +user.email
+});
+})
+.catch(function(err){
+console.error("Error:" ,err);
+});
+
+ </script>
+</body>
+</html>
