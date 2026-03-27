@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Field Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .slide-container {
+            width: 100%;
+            max-width: 1000px;
+            aspect-ratio: 16/9;
+            background: white;
+            box-shadow: 0 15px 60px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            padding: 45px;
+            position: relative;
+            overflow-y: auto;
+        }
+        
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .slide-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .slide-1 h1 {
+            font-size: 2.8em;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        
+        .slide-1 p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin: 10px 0;
+        }
+        
+        .slide h2 {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 25px;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .slide h3 {
+            font-size: 1.4em;
+            color: #764ba2;
+            margin: 18px 0 10px 0;
+        }
+        
+        .slide ul {
+            list-style: none;
+            margin: 12px 0;
+        }
+        
+        .slide li {
+            font-size: 1.1em;
+            margin: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+            color: #333;
+        }
+        
+        .slide li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .slide p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #444;
+            margin: 10px 0;
+        }
+        
+        .formula {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 12px 18px;
+            margin: 12px 0;
+            font-size: 1.2em;
+            text-align: center;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .highlight-box {
+            background: #fff9e6;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 12px 0;
+        }
+        
+        .problem-box {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 5px;
+        }
+        
+        .solution {
+            background: #f3e5f5;
+            border-left: 5px solid #9c27b0;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 5px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin: 12px 0;
+        }
+        
+        .qa-slide {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .qa-slide h2 {
+            color: white;
+            border: none;
+            font-size: 3.5em;
+            margin-bottom: 25px;
+        }
+        
+        .number-box {
+            position: absolute;
+            bottom: 12px;
+            right: 20px;
+            background: rgba(102, 126, 234, 0.15);
+            padding: 6px 15px;
+            border-radius: 5px;
+            font-size: 1em;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .slide-1 .number-box,
+        .qa-slide .number-box {
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .controls {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1em;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .slide-counter {
+            color: white;
+            font-size: 1.15em;
+            min-width: 90px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 1em;
+        }
+        
+        th, td {
+            border: 2px solid #667eea;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            font-size: 0.95em;
+        }
+        
+        .step {
+            margin: 6px 0;
+            padding-left: 15px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Slide 1 -->
+        <div class="slide slide-1 active">
+            <h1>Electric Field Due to<br>Continuous Charge Distribution</h1>
+            <p style="font-size: 1.5em; margin-top: 30px;">Understanding Integration in Electrostatics</p>
+            <div class="number-box">1</div>
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="slide">
+            <h2>Introduction</h2>
+            <p>An <strong>electric field</strong> describes how electric charges influence the space around them.</p>
+            <p>When charge is concentrated at a point, we can easily calculate the electric field.</p>
+            <div class="highlight-box">
+                <p><strong>However:</strong> In many real situations, charge is spread continuously over an object. This is known as a <strong>continuous charge distribution</strong>.</p>
+            </div>
+            <div class="number-box">2</div>
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="slide">
+            <h2>What is a Continuous Charge Distribution?</h2>
+            <p><strong>Definition:</strong> A continuous charge distribution occurs when electric charge is spread uniformly along a line, over a surface, or throughout a volume, instead of being concentrated at a single point.</p>
+            <div class="grid-3">
+                <div class="highlight-box">
+                    <h3 style="font-size: 1.1em; margin: 0 0 8px 0;">Linear</h3>
+                    <p style="font-size: 0.95em; margin: 0;">Charged rod/wire</p>
+                </div>
+                <div class="highlight-box">
+                    <h3 style="font-size: 1.1em; margin: 0 0 8px 0;">Surface</h3>
+                    <p style="font-size: 0.95em; margin: 0;">Charged sheet</p>
+                </div>
+                <div class="highlight-box">
+                    <h3 style="font-size: 1.1em; margin: 0 0 8px 0;">Volume</h3>
+                    <p style="font-size: 0.95em; margin: 0;">Charged sphere</p>
+                </div>
+            </div>
+            <div class="number-box">3</div>
+        </div>
+        
+        <!-- Slide 4 -->
+        <div class="slide">
+            <h2>Basic Method - Integration</h2>
+            <p>To find the electric field due to a continuous charge distribution, we:</p>
+            <ul>
+                <li>Divide the charge into very small elements <strong>dq</strong></li>
+                <li>Each dq produces a small electric field <strong>dE</strong></li>
+                <li>Total field = <strong>vector sum</strong> using <strong>integration</strong></li>
+            </ul>
+            <div class="formula">
+                dE = k(dq/r²) r̂
+            </div>
+            <div class="formula">
+                E = k ∫ (dq/r²) r̂
+            </div>
+            <div class="number-box">4</div>
+        </div>
+        
+        <!-- Slide 5 -->
+        <div class="slide">
+            <h2>Charge Density - What & Why?</h2>
+            <p><strong>What is Charge Density?</strong></p>
+            <p>Charge density tells us how charge is distributed in space.</p>
+            <div class="highlight-box">
+                <p><strong>Why is this VERY important?</strong></p>
+                <p>• We cannot integrate Q directly<br>
+                • We must integrate dq<br>
+                • Charge density allows us to express dq in terms of dx, dA, or dV</p>
+            </div>
+            <div class="number-box">5</div>
+        </div>
+        
+        <!-- Slide 6 -->
+        <div class="slide">
+            <h2>Types of Charge Density</h2>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Symbol</th>
+                    <th>Formula</th>
+                    <th>Unit</th>
+                    <th>dq =</th>
+                </tr>
+                <tr>
+                    <td><strong>Linear</strong></td>
+                    <td>λ</td>
+                    <td>Q/L</td>
+                    <td>C/m</td>
+                    <td>λ dx</td>
+                </tr>
+                <tr>
+                    <td><strong>Surface</strong></td>
+                    <td>σ</td>
+                    <td>Q/A</td>
+                    <td>C/m²</td>
+                    <td>σ dA</td>
+                </tr>
+                <tr>
+                    <td><strong>Volume</strong></td>
+                    <td>ρ</td>
+                    <td>Q/V</td>
+                    <td>C/m³</td>
+                    <td>ρ dV</td>
+                </tr>
+            </table>
+            <div class="number-box">6</div>
+        </div>
+        
+        <!-- Slide 7 -->
+        <div class="slide">
+            <h2>General Formula</h2>
+            <p>The total electric field at a point is obtained by integrating contributions from all charge elements.</p>
+            <div class="formula" style="font-size: 1.4em; margin: 25px 0;">
+                E = k ∫ (dq/r²) r̂
+            </div>
+            <p><strong>Where:</strong></p>
+            <ul>
+                <li>k = 9 × 10⁹ N·m²/C²</li>
+                <li>dq = charge element (using density)</li>
+                <li>r = distance from dq to point</li>
+            </ul>
+            <div class="number-box">7</div>
+        </div>
+        
+        <!-- Slide 8 -->
+        <div class="slide">
+            <h2>Charged Rod: Point on Extension</h2>
+            <p>Point lies along the axis of the rod, distance 'a' from one end.</p>
+            <p><strong>Key:</strong> All field contributions in same direction → direct addition</p>
+            <div class="formula" style="font-size: 1.3em;">
+                E = kQ / [a(a + L)]
+            </div>
+            <div class="highlight-box">
+                <p><strong>Far away (a >> L):</strong> Rod behaves like point charge</p>
+            </div>
+            <div class="number-box">8</div>
+        </div>
+        
+        <!-- Slide 9 -->
+        <div class="slide">
+            <h2>Charged Rod: Perpendicular Bisector</h2>
+            <p>Point on perpendicular bisector, distance 'a' from center.</p>
+            <p><strong>Symmetry:</strong> Horizontal components cancel, only vertical remains!</p>
+            <div class="formula" style="font-size: 1.2em;">
+                E = kQa / √[a² + (L/2)²]
+            </div>
+            <div class="number-box">9</div>
+        </div>
+        
+        <!-- Slide 10 -->
+        <div class="slide">
+            <h2>Infinite Charged Rod</h2>
+            <p>For an infinitely long rod, field depends only on distance 'a'.</p>
+            <div class="formula" style="font-size: 1.4em;">
+                E = 2kλ / a
+            </div>
+            <p><strong>Observations:</strong></p>
+            <ul>
+                <li>Depends on λ (not total Q)</li>
+                <li>Decreases as 1/a (not 1/a²)</li>
+                <li>Perpendicular to rod</li>
+            </ul>
+            <div class="number-box">10</div>
+        </div>
+        
+        <!-- Slide 11 -->
+        <div class="slide">
+            <h2>Example: Half +Q, Half −Q Rod</h2>
+            <p>One half positive, other half negative.</p>
+            <p><strong>On perpendicular bisector:</strong> Fields from both halves point same direction and add!</p>
+            <div class="highlight-box">
+                <p><strong>Far away:</strong> Net field → zero (total charge is zero)</p>
+            </div>
+            <div class="number-box">11</div>
+        </div>
+        
+        <!-- Slide 12 -->
+        <div class="slide">
+            <h2>Infinite Sheet of Charge</h2>
+            <p>Produces uniform field <strong>independent of distance</strong>!</p>
+            <div class="formula" style="font-size: 1.4em;">
+                E = σ / (2ε₀)
+            </div>
+            <p>Where: ε₀ = 8.85 × 10⁻¹² C²/(N·m²)</p>
+            <div class="highlight-box">
+                <p>Field perpendicular to sheet, constant magnitude everywhere!</p>
+            </div>
+            <div class="number-box">12</div>
+        </div>
+        
+        <!-- Slide 13 -->
+        <div class="slide">
+            <h2>Problem 1: Linear Charge Density</h2>
+            <div class="problem-box">
+                <p><strong>Problem:</strong> Rod of length 2 m, charge 8 μC. Find λ.</p>
+            </div>
+            <div class="solution">
+                <div class="step"><strong>Given:</strong> Q = 8 × 10⁻⁶ C, L = 2 m</div>
+                <div class="step"><strong>Formula:</strong> λ = Q/L</div>
+                <div class="step"><strong>Calculate:</strong> λ = 8×10⁻⁶/2 = 4×10⁻⁶ C/m</div>
+                <div class="step"><strong>Answer:</strong> λ = 4 μC/m</div>
+            </div>
+            <div class="number-box">13</div>
+        </div>
+        
+        <!-- Slide 14 -->
+        <div class="slide">
+            <h2>Problem 2: Surface Charge Density</h2>
+            <div class="problem-box">
+                <p><strong>Problem:</strong> Square sheet, area 0.5 m², charge 10 μC. Find σ.</p>
+            </div>
+            <div class="solution">
+                <div class="step"><strong>Given:</strong> Q = 10 × 10⁻⁶ C, A = 0.5 m²</div>
+                <div class="step"><strong>Formula:</strong> σ = Q/A</div>
+                <div class="step"><strong>Calculate:</strong> σ = 10×10⁻⁶/0.5 = 2×10⁻⁵ C/m²</div>
+                <div class="step"><strong>Answer:</strong> σ = 2×10⁻⁵ C/m²</div>
+            </div>
+            <div class="number-box">14</div>
+        </div>
+        
+        <!-- Slide 15 -->
+        <div class="slide">
+            <h2>Problem 3: Field on Rod Axis</h2>
+            <div class="problem-box">
+                <p><strong>Problem:</strong> Rod L=1m, Q=5μC. Point 0.5m from end. Find E.</p>
+            </div>
+            <div class="solution">
+                <div class="step"><strong>Given:</strong> Q=5×10⁻⁶C, L=1m, a=0.5m, k=9×10⁹</div>
+                <div class="step"><strong>Formula:</strong> E = kQ/[a(a+L)]</div>
+                <div class="step"><strong>Calc:</strong> E = 9×10⁹×5×10⁻⁶/[0.5×1.5]</div>
+                <div class="step">E = 45×10³/0.75</div>
+                <div class="step"><strong>Answer:</strong> E = 6.0×10⁴ N/C</div>
+            </div>
+            <div class="number-box">15</div>
+        </div>
+        
+        <!-- Slide 16 -->
+        <div class="slide">
+            <h2>Problem 4: Perpendicular Bisector</h2>
+            <div class="problem-box">
+                <p><strong>Problem:</strong> Rod L=2m, Q=4μC. Point 1m from center. Find E.</p>
+            </div>
+            <div class="solution">
+                <div class="step"><strong>Given:</strong> Q=4×10⁻⁶C, L=2m, a=1m</div>
+                <div class="step"><strong>Formula:</strong> E = kQa/√[a²+(L/2)²]</div>
+                <div class="step"><strong>Calc:</strong> E = 9×10⁹×4×10⁻⁶×1/√2</div>
+                <div class="step">E = 36×10³/1.414</div>
+                <div class="step"><strong>Answer:</strong> E ≈ 2.55×10⁴ N/C</div>
+            </div>
+            <div class="number-box">16</div>
+        </div>
+        
+        <!-- Slide 17 -->
+        <div class="slide">
+            <h2>Problem 5: Infinite Rod</h2>
+            <div class="problem-box">
+                <p><strong>Problem:</strong> Infinite wire, λ=3μC/m. Distance 0.2m. Find E.</p>
+            </div>
+            <div class="solution">
+                <div class="step"><strong>Given:</strong> λ=3×10⁻⁶ C/m, a=0.2m</div>
+                <div class="step"><strong>Formula:</strong> E = 2kλ/a</div>
+                <div class="step"><strong>Calc:</strong> E = 2×9×10⁹×3×10⁻⁶/0.2</div>
+                <div class="step">E = 54×10³/0.2</div>
+                <div class="step"><strong>Answer:</strong> E = 2.7×10⁵ N/C</div>
+            </div>
+            <div class="number-box">17</div>
+        </div>
+        
+        <!-- Slide 18 -->
+        <div class="slide">
+            <h2>Problem 6: Infinite Sheet</h2>
+            <div class="problem-box">
+                <p><strong>Problem:</strong> Sheet σ=6×10⁻⁶ C/m². Find E.</p>
+            </div>
+            <div class="solution">
+                <div class="step"><strong>Given:</strong> σ=6×10⁻⁶ C/m²</div>
+                <div class="step"><strong>Formula:</strong> E = σ/(2ε₀)</div>
+                <div class="step"><strong>Calc:</strong> E = 6×10⁻⁶/(2×8.85×10⁻¹²)</div>
+                <div class="step">E = 6×10⁻⁶/1.77×10⁻¹¹</div>
+                <div class="step"><strong>Answer:</strong> E ≈ 3.39×10⁵ N/C</div>
+            </div>
+            <div class="number-box">18</div>
+        </div>
+        
+        <!-- Slide 19 -->
+        <div class="slide">
+            <h2>Key Physical Meanings</h2>
+            <div class="highlight-box">
+                <p><strong>1. Why Integration?</strong><br>Charge is continuous, cannot be treated as single point</p>
+            </div>
+            <div class="highlight-box">
+                <p><strong>2. Symmetry</strong><br>Simplifies calculations by canceling components</p>
+            </div>
+            <div class="highlight-box">
+                <p><strong>3. Far-Field Behavior</strong><br>At large distances, acts like point charge</p>
+            </div>
+            <div class="number-box">19</div>
+        </div>
+        
+        <!-- Slide 20 -->
+        <div class="slide">
+            <h2>Questions for Classmates</h2>
+            <p><strong>Q1:</strong> Why do we use integration?</p>
+            <p><strong>Q2:</strong> Why do horizontal components cancel in perpendicular bisector?</p>
+            <p><strong>Q3:</strong> Which density has unit C/m²?</p>
+            <p><strong>Q4:</strong> Why is infinite sheet field constant?</p>
+            <p><strong>Q5:</strong> When does rod behave like point charge?</p>
+            <div class="number-box">20</div>
+        </div>
+        
+        <!-- Slide 21 -->
+        <div class="slide">
+            <h2>Answers</h2>
+            <p><strong>A1:</strong> Charge is continuous, not a single point</p>
+            <p><strong>A2:</strong> Symmetry—equal charges opposite sides create equal/opposite horizontal fields</p>
+            <p><strong>A3:</strong> Surface charge density (σ)</p>
+            <p><strong>A4:</strong> Far charge contributions compensate—no distance dependence</p>
+            <p><strong>A5:</strong> When observation point very far (distance >> length)</p>
+            <div class="number-box">21</div>
+        </div>
+        
+        <!-- Slide 22 -->
+        <div class="slide">
+            <h2>Conclusion</h2>
+            <p>The electric field due to continuous charge distribution is found by:</p>
+            <ul>
+                <li>Dividing charge into small elements (dq)</li>
+                <li>Applying Coulomb's law (dq → dE)</li>
+                <li>Integrating over entire distribution</li>
+                <li>Using charge density (λ, σ, ρ) to express dq</li>
+                <li>Applying symmetry to simplify</li>
+            </ul>
+            <div class="highlight-box" style="margin-top: 15px; text-align: center;">
+                <p><strong>Integration transforms discrete into continuous!</strong></p>
+            </div>
+            <div class="number-box">22</div>
+        </div>
+        
+        <!-- Slide 23 -->
+        <div class="slide qa-slide">
+            <h2>Questions?</h2>
+            <p style="font-size: 1.4em;">Thank you!</p>
+            <p style="margin-top: 40px;">Ready for discussion</p>
+            <div class="number-box">23</div>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+        <div class="slide-counter" id="slideCounter">1 / 23</div>
+        <button id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    </div>
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('slideCounter').textContent = `${currentSlide + 1} / ${totalSlides}`;
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+        
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+        
+        showSlide(0);
+    </script>
+</body>
+</html>
